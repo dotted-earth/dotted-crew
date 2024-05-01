@@ -25,6 +25,7 @@ class DottedCrew:
             agents=[expert_travel_agent],
             tasks=[task_generate_itinerary],
             verbose=2,
+            max_rpm=2 # prevent rate limiting on Groq's API
         )
 
         result = crew.kickoff()
