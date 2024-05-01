@@ -1,6 +1,6 @@
 
 from fastapi import FastAPI
-from process import DottedCrew
+from .process import DottedCrew
 
 app = FastAPI()
 

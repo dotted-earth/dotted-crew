@@ -2,8 +2,8 @@ import os
 from crewai import Crew
 from decouple import config
 
-from agents import CustomAgents
-from tasks import CustomTasks
+from .agents import CustomAgents
+from .tasks import CustomTasks
 
 
 os.environ['GROQ_API_KEY'] = config("GROQ_API_KEY")

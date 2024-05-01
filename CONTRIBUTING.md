@@ -16,3 +16,7 @@ Install pipx
 1. View env created from install `poetry env list`
 2. Enter poetry shell python env, `poetry shell`
 3. Start server: `uvicorn server:app --reload`
+
+## Crew AI
+
+1. [Docs](https://docs.crewai.com/core-concepts/Tasks/)
