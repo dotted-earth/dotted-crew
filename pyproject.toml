@@ -16,6 +16,7 @@ fastapi = "^0.110.2"
 uvicorn = { extras = ["standard"], version = "^0.29.0" }
 langchain-groq = "^0.1.3"
 python-decouple = "^3.8"
+pydantic = "^2.7.1"
 
 [tool.pyright]
 # https://github.com/microsoft/pyright/blob/main/docs/configuration.md
