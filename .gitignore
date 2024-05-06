@@ -5,3 +5,5 @@
 
 #Cache folders
 __pycache__/
+
+.python-version

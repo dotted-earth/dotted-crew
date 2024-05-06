@@ -1,21 +1,17 @@
-Install pipx
-`brew install pipx`
+# CONTRIBUTING
 
 ## Prerequisites
 
-1. Install pipx, `brew install pipx`
-2. Install poetry, `pipx install poetry`
-   - verify poetry install `poetry --version`
+1. ensure you have a python manager [pyenv installed](https://github.com/pyenv/pyenv-installer)
+2. create virtualenv `pyenv virtualenv dotted-crew`
+3. activate venv `pyenv activate dotted-crew`
+4. activate local venv `pyenv local dotted-crew`
+5. ensure your in the correct venv `pyenv which pip` should output `/Users/your_username/.pyenv/versions/dotted-crew/bin/pip`
+6. run `pip install`
 
-## Install dependencies
+## Start server
 
-1. `poetry install --no-root`
-
-## Start
-
-1. View env created from install `poetry env list`
-2. Enter poetry shell python env, `poetry shell`
-3. Start server: `uvicorn src.main:app --port 5500 --reload`
+`uvicorn src.main:app --port 5500 --reload`
 
 ## Crew AI
 
