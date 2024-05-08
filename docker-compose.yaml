@@ -9,20 +9,25 @@
 # https://github.com/docker/awesome-compose
 services:
   server:
+    container_name: dotted_crew
     build:
       context: .
     ports:
       - 5500:5500
+    develop:
+      watch:
+        - action: rebuild
+          path: .
+          target: /app
     environment:
       - GROQ_API_KEY=${GROQ_API_KEY}
     command: uvicorn src.main:app --host 0.0.0.0 --port 5500
     volumes:
-      - app:/app
+      - dotted-crew:/data
 
 volumes:
-  app:
-    name: "dotted-crew"
-
+  dotted-crew:
+  
 # The commented out section below is an example of how to define a PostgreSQL
 # database that your application can use. `depends_on` tells Docker Compose to
 # start the database before your application. The `db-data` volume persists the
