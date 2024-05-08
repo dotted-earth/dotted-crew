@@ -12,7 +12,7 @@ from src.models.recreation import Recreation
 app = FastAPI()
 
 
-class GenerateItinerary(BaseModel):
+class ItineraryData(BaseModel):
     itinerary: Itinerary
     recreations: List[Recreation]
     cuisines: List[Cuisine]
@@ -26,10 +26,8 @@ def ping_pong():
 
 
 @app.post("/generate")
-async def generate_itinerary(data: GenerateItinerary):
-    print(data)
+async def generate_itinerary(data: ItineraryData):
 
-    return "hi"
-    dotted_crew = DottedCrew()
+    dotted_crew = DottedCrew(data)
     result = dotted_crew.run()
     return result

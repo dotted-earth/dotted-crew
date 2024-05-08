@@ -1,18 +1,18 @@
 from crewai import Crew
 
 from src.agents.expert_travel_agent import ExpertTravelAgent
+from src.main import ItineraryData
 from src.tasks.itinerary_tasks import ItineraryTasks
 from src.utils.chat_groq import groqLLM
 
 
 class DottedCrew:
-    def run(self):
+    def run(self, data: ItineraryData):
         # Define your custom agents and tasks in agents.py and tasks.py
-        agents = ExpertTravelAgent(groqLLM)
 
         tasks = ItineraryTasks()
 
-        expert_travel_agent = agents.expert_travel_agent()
+        expert_travel_agent = ExpertTravelAgent(groqLLM)
 
         task_generate_itinerary = tasks.generate_itinerary(expert_travel_agent)
 
