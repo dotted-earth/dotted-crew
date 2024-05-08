@@ -1,9 +1,11 @@
 from crewai import Task
 from textwrap import dedent
 
+from src.agents.local_crime_expert import LocalCrimeExpertAgent
+
 
 class CrimeTasks:
-    def research_local_crime(self, agent, location):
+    def research_local_crime(self, agent: LocalCrimeExpertAgent, location: str) -> Task:
         return Task(
             description=dedent(f"""Research crime near {location}"""),
             agent=agent,
@@ -11,7 +13,7 @@ class CrimeTasks:
             async_execution=True,
         )
 
-    def provide_safety_tips(self, agent, context):
+    def provide_safety_tips(self, agent: LocalCrimeExpertAgent, context: str):
         return Task(
             description=dedent(f"""Give safety tips"""),
             agent=agent,
