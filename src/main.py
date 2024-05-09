@@ -1,20 +1,14 @@
-from typing import List
 from fastapi import FastAPI
 from src.crew import DottedCrew
-from src.models.itinerary_data import ItineraryData
+from src.models.generate_itinerary_request_body import GenerateItineraryRequestBody
 
 
 app = FastAPI()
 
 
-@app.get("/ping")
-def ping_pong():
-    return "pong"
-
-
 @app.post("/generate")
-async def generate_itinerary(data: ItineraryData):
+async def generate_itinerary(data: GenerateItineraryRequestBody):
 
     dotted_crew = DottedCrew()
-    result = dotted_crew.run(data)
+    result = await dotted_crew.run(data)
     return result

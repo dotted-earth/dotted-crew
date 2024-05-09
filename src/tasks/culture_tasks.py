@@ -12,5 +12,5 @@ class CultureTasks:
             description=dedent(f"""Research local culture for {location}"""),
             agent=agent,
             expected_output="A JSON string",
-            async_execution=True,
+            async_execution=False,
         )

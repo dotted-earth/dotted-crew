@@ -10,7 +10,7 @@ class CrimeTasks:
             description=dedent(f"""Research crime near {location}"""),
             agent=agent,
             expected_output="A JSON string",
-            async_execution=True,
+            async_execution=False,
         )
 
     def provide_safety_tips(self, agent: LocalCrimeExpertAgent, context: str):
@@ -19,5 +19,5 @@ class CrimeTasks:
             agent=agent,
             context=context,
             expected_output="A JSON string",
-            async_execution=True,
+            async_execution=False,
         )

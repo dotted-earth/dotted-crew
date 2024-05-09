@@ -1,7 +1,5 @@
-import os
 from crewai import Crew
 from crewai.process import Process
-from langchain_groq import ChatGroq
 
 from src.agents.expert_travel_agent import ExpertTravelAgent
 from src.agents.local_crime_expert import LocalCrimeExpertAgent
@@ -10,7 +8,7 @@ from src.agents.local_food_expert import LocalFoodExpertAgent
 from src.agents.local_law_expert import LocalLawExpertAgent
 from src.agents.weather_expert import WeatherExpertAgent
 
-from src.models.itinerary_data import ItineraryData
+from src.models.generate_itinerary_request_body import GenerateItineraryRequestBody
 from src.tasks.crime_tasks import CrimeTasks
 from src.tasks.culture_tasks import CultureTasks
 from src.tasks.food_tasks import FoodTasks
@@ -23,7 +21,7 @@ from src.utils.chat_groq import groqLLM
 
 
 class DottedCrew:
-    def run(self, data: ItineraryData):
+    async def run(self, data: GenerateItineraryRequestBody):
         itinerary = data.itinerary
         destination = itinerary.destination
         start_date = itinerary.start_date
@@ -57,8 +55,15 @@ class DottedCrew:
         )
 
         itinerary_tasks = ItineraryTasks().generate_itinerary(
-            expert_travel_agent,
-            itinerary,
+            agent=expert_travel_agent,
+            itinerary=itinerary,
+            context=[
+                food_tasks,
+                culture_tasks,
+                weather_tasks,
+                crime_tasks,
+                local_law_tasks,
+            ],
         )
 
         crew = Crew(
@@ -74,12 +79,9 @@ class DottedCrew:
                 itinerary_tasks,
             ],
             process=Process.hierarchical,
-            manager_llm=ChatGroq(
-                api_key=os.environ.get("GROQ_API_KEY"),
-                model="llama3-8b-8192",
-                temperature=0,
-            ),
-            verbose=2,
+            manager_llm=groqLLM,
+            # memory=True,
+            verbose=True,
             max_rpm=25,  # prevent rate limiting on Groq's API
         )
 

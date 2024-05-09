@@ -12,5 +12,5 @@ class LocalLawTasks:
             ),
             agent=agent,
             expected_output="A JSON string",
-            async_execution=True,
+            async_execution=False,
         )

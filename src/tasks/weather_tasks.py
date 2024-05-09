@@ -20,7 +20,7 @@ class WeatherTasks:
             ),
             agent=agent,
             expected_output="A JSON string",
-            async_execution=True,
+            async_execution=False,
         )
 
     def provide_weather_tips(self, agent: WeatherExpertAgent, context: str) -> Task:
@@ -29,5 +29,5 @@ class WeatherTasks:
             agent=agent,
             context=context,
             expected_output="A JSON string",
-            async_execution=True,
+            async_execution=False,
         )
