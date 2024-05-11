@@ -2,6 +2,7 @@ from crewai import Task
 from textwrap import dedent
 
 from src.agents.local_culture_expert import LocalCultureExpertAgent
+from src.models.culture import Culture
 
 
 class CultureTasks:
@@ -12,5 +13,6 @@ class CultureTasks:
             description=dedent(f"""Research local culture for {location}"""),
             agent=agent,
             expected_output="A JSON string",
+            output_json=Culture,
             async_execution=False,
         )

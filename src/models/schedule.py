@@ -2,8 +2,8 @@ import datetime
 from typing import List, Union
 from pydantic import BaseModel
 
-from src.models.schedule_line_item import ScheduleLineItem
 from src.models.enums import ScheduleLengthEnum, ScheduleIntensityEnum
+from src.models.schedule_line_item import ScheduleLineItem
 
 
 class Schedule(BaseModel):
@@ -16,3 +16,6 @@ class Schedule(BaseModel):
     schedule_length: ScheduleLengthEnum
     schedule_line_items: List[ScheduleLineItem] = []
     estimated_cost: Union[float | None] = None
+
+
+Schedule.model_rebuild()

@@ -1,6 +1,7 @@
 from crewai import Task
 from textwrap import dedent
 from src.agents.local_food_expert import LocalFoodExpertAgent
+from src.models.meal import Meal
 
 
 class FoodTasks:
@@ -12,6 +13,7 @@ class FoodTasks:
                 f"""Find a list of local restaurants in the area of {location}. There should be at least 10 different restaurants for each category: breakfast, lunch, and dinner"""
             ),
             agent=agent,
-            expected_output="A JSON string",
+            expected_output="A list of restaurants to categorized by breakfast, brunch, lunch, late lunch, dinner, and late dinner",
+            output_json=Meal,
             async_execution=False,
         )

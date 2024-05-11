@@ -3,6 +3,7 @@ from crewai import Task
 from textwrap import dedent
 
 from src.agents.weather_expert import WeatherExpertAgent
+from src.models.weather import Weather
 
 
 class WeatherTasks:
@@ -20,6 +21,7 @@ class WeatherTasks:
             ),
             agent=agent,
             expected_output="A JSON string",
+            output_json=Weather,
             async_execution=False,
         )
 
@@ -28,6 +30,6 @@ class WeatherTasks:
             description=dedent(f"""Give safety tips"""),
             agent=agent,
             context=context,
-            expected_output="A JSON string",
+            expected_output="A list of tips",
             async_execution=False,
         )

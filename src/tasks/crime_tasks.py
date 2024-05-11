@@ -2,6 +2,7 @@ from crewai import Task
 from textwrap import dedent
 
 from src.agents.local_crime_expert import LocalCrimeExpertAgent
+from src.models.crime import Crime
 
 
 class CrimeTasks:
@@ -10,6 +11,7 @@ class CrimeTasks:
             description=dedent(f"""Research crime near {location}"""),
             agent=agent,
             expected_output="A JSON string",
+            output_json=Crime,
             async_execution=False,
         )
 
@@ -19,5 +21,6 @@ class CrimeTasks:
             agent=agent,
             context=context,
             expected_output="A JSON string",
+            output_json=Crime,
             async_execution=False,
         )

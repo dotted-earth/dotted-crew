@@ -6,3 +6,6 @@ from src.models.schedule import Schedule
 
 class ItineraryDraft(BaseModel):
     schedule: List[Schedule]
+
+
+ItineraryDraft.model_rebuild()

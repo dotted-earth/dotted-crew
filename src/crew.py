@@ -21,7 +21,7 @@ from src.utils.chat_groq import groqLLM
 
 
 class DottedCrew:
-    async def run(self, data: GenerateItineraryRequestBody):
+    def run(self, data: GenerateItineraryRequestBody):
         itinerary = data.itinerary
         destination = itinerary.destination
         start_date = itinerary.start_date
@@ -86,4 +86,5 @@ class DottedCrew:
         )
 
         result = crew.kickoff()
+
         return result

@@ -8,3 +8,6 @@ class Location(BaseModel):
     address: Address
     lat: float
     lon: float
+
+
+Location.model_rebuild()
