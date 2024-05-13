@@ -19,7 +19,7 @@ class ItineraryTasks:
                 f"""Generate a {itinerary.length_of_stay}-day itinerary for a trip to {itinerary.destination} starting {itinerary.start_date} to {itinerary.end_date}. The itinerary must include breakfast, lunch, and dinner and at least 2 activities. Also include mode of transportation, distance from point ot point, and duration of each activity, and commuting. Make sure to use the most recent data as possible. When working with your co-workers, give them the context all the itinerary {itinerary.model_dump_json()}"""
             ),
             agent=agent,
-            expected_output="An itinerary of the traveler where it list out each day and their activities like meals, transportation, and point of interest. Each activity should have a duration, a distance, and any associated costs",
+            expected_output="A JSON object",
             output_json=ItineraryDraft,
             context=context,
             async_execution=False,

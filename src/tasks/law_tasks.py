@@ -12,7 +12,7 @@ class LocalLawTasks:
                 f"""Research important local laws for travelers {location}"""
             ),
             agent=agent,
-            expected_output="A JSON string",
+            expected_output="A JSON object",
             output_json=Law,
             async_execution=False,
         )

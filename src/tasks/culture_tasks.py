@@ -12,7 +12,7 @@ class CultureTasks:
         return Task(
             description=dedent(f"""Research local culture for {location}"""),
             agent=agent,
-            expected_output="A JSON string",
+            expected_output="A JSON object",
             output_json=Culture,
             async_execution=False,
         )

@@ -9,6 +9,6 @@ app = FastAPI()
 @app.post("/generate")
 def generate_itinerary(data: GenerateItineraryRequestBody):
 
-    dotted_crew = DottedCrew()
-    result = dotted_crew.run(data)
+    dotted_crew = DottedCrew(data)
+    result = dotted_crew.run()
     return result

@@ -21,17 +21,21 @@ from src.utils.chat_groq import groqLLM
 
 
 class DottedCrew:
-    def run(self, data: GenerateItineraryRequestBody):
-        itinerary = data.itinerary
-        destination = itinerary.destination
-        start_date = itinerary.start_date
-        end_date = itinerary.end_date
-        length_of_stay = itinerary.length_of_stay
+    def __init__(self, data: GenerateItineraryRequestBody):
+        self.data = data
 
-        user_recreations = data.recreations
-        user_diets = data.diets
-        user_cuisines = data.cuisines
-        user_food_allergies = data.food_allergies
+    def run(self):
+
+        itinerary = self.data.itinerary
+        destination = itinerary.destination
+        # start_date = itinerary.start_date
+        # end_date = itinerary.end_date
+        # length_of_stay = itinerary.length_of_stay
+
+        # user_recreations = self.data.recreations
+        # user_diets = self.data.diets
+        # user_cuisines = self.data.cuisines
+        # user_food_allergies = self.data.food_allergies
 
         expert_travel_agent = ExpertTravelAgent(groqLLM).create()
         weather_expert_agent = WeatherExpertAgent(groqLLM).create()
@@ -47,7 +51,7 @@ class DottedCrew:
             local_culture_expert, destination
         )
         weather_tasks = WeatherTasks().research_local_weather(
-            weather_expert_agent, destination, start_date, end_date, length_of_stay
+            weather_expert_agent, destination
         )
         crime_tasks = CrimeTasks().research_local_crime(local_crime_expert, destination)
         local_law_tasks = LocalLawTasks().research_local_laws(
