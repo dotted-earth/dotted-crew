@@ -1,7 +1,6 @@
-from pydantic import BaseModel
-from typing import Union
+from pydantic import BaseModel, Field
 
 
 class Culture(BaseModel):
-    name: str
-    description: str
+    name: str = Field(description="The name of the cultural behavior")
+    description: str = Field(description="A brief description of the culture's significance and history")
